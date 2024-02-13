@@ -2,19 +2,33 @@ body {
     background-color: #121212;
     margin: 0;
     padding: 0;
+    height: 100%;
+    width: 100%;
 }
 
 .home-wrapper {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     padding: 10%;
+    gap: 0.5rem;
+}
+
+textarea.input-wrapper {
+    background-color: #121212;
+    width: 500px;
+    color: white; 
+    border: 1px solid #ccc; 
+    padding: 10px; 
+    border-radius: 10px; 
 }
 
 .generate-button {
     background-color: #121212;
     color: white;
     padding: 10px;
+    border: 1px solid #ccc;
     border-radius: 10px;
 }

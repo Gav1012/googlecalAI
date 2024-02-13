@@ -5,7 +5,7 @@ function Home() {
     return (
         <div className="home-wrapper" style={{color: "white"}}>
             Welcome to GoogleCalendarAI (WIP of course)
-            <input type="text" placeholder="Enter you prompt"></input>
+            <textarea type="text" className="input-wrapper" placeholder="Enter your calendar details"></textarea>
             <button className="generate-button">Generate</button>
         </div>
     );
