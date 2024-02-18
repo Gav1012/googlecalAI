@@ -1,19 +1,27 @@
-body {
-    background-color: #121212;
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-}
-
 .home-wrapper {
     display: flex;
+    background-color: #121212;
+    /* min-height: calc(100vh - 2rem); */
+    min-width: 100vh;
+    height: 100vh;
     flex-direction: column;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    padding: 10%;
     gap: 0.5rem;
+    overflow: hidden;
+}
+
+.login-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-color: #121212;
+    color: white;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: transparent;
+    margin-bottom: 1rem;
 }
 
 textarea.input-wrapper {
@@ -22,7 +30,9 @@ textarea.input-wrapper {
     color: white; 
     border: 1px solid #ccc; 
     padding: 10px; 
-    border-radius: 10px; 
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    background-color: transparent;
 }
 
 .generate-button {
@@ -31,4 +41,10 @@ textarea.input-wrapper {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 10px;
+    background-color: transparent;
+    margin-bottom: 1rem;
+}
+
+.generate-button:hover {
+    background-color: grey;
 }
