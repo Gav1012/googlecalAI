@@ -1,6 +1,12 @@
 import React from "react"
 import './Home.css'
 
+fetch('/get_message')
+    .then(response => response.json())
+    .then(data => {
+        console.log('recieved data: ', data.message);
+    });
+
 function Home() {
     return (
         <div className="home-wrapper" style={{color: "white"}}>

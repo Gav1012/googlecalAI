@@ -1,7 +1,9 @@
 import os
 from openai import OpenAI
 from dotenv import load_dotenv
+from flask import Flask, jsonify
 
+app = Flask(__name__)
 load_dotenv()
 
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
@@ -15,4 +17,13 @@ completion = client.chat.completions.create(
   ]
 )
 
-print(completion.choices[0].message)
+# print(completion.choices[0].message)
+# message = completion.choices[0].message
+
+@app.route('/get_message')
+def get_message():
+  message = "Hello from ai.py"
+  return jsonify(message=message)
+
+if __name__ == '__main__':
+  app.run(debug=True)
