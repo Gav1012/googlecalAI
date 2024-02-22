@@ -19,7 +19,7 @@ function Home() {
             <h1>Welcome to GoogleCalendarAI (WIP of course)</h1>
             <textarea type="text" className="input-wrapper" placeholder="Enter your calendar details"></textarea>
             <button className="generate-button">Generate</button>
-            <div>{message.members}</div>
+            <div>{message.message}</div>
         </div>
     );
 }
