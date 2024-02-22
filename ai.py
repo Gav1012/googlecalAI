@@ -13,14 +13,12 @@ def generate_response():
   completion = client.chat.completions.create(
   model="gpt-3.5-turbo",
   messages=[
-    {"role": "system", "content": "You are a poetic assistant, skilled in explaining complex programming concepts with creative flair."},
-    {"role": "user", "content": "Compose a poem that explains the concept of recursion in programming."}
+    {"role": "system", "content": "You are an assistant that is knowledgable when it comes to making schedules for people. You only respond with the days and times of events"},
+    {"role": "user", "content": "Make me a schedule form M-F that has 1 hour of reading and 2 hours of programming"}
   ],
   max_tokens=50
   )
   return completion.choices[0].message.content;
-
-
 
 @app.route("/get_message")
 def get_message():
