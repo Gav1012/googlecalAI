@@ -1,7 +1,7 @@
 import os
 from openai import OpenAI
 from dotenv import load_dotenv
-from flask import Flask
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 
 # sets up Flask and OpenAI API
@@ -32,6 +32,12 @@ def generate_response():
 @app.route("/get_message")
 def get_message():
   return {"message": [generate_response()]}
+
+@app.route("/send_input", methods=["POST"])
+def send_input():
+  data = request.json.get("data")
+  print(f"Recieved data: {data}")
+  return jsonify({"message": "Messaged recieved successfully"})
 
 if __name__ == '__main__':
   app.run(debug=True)

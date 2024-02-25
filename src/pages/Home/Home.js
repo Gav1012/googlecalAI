@@ -40,8 +40,16 @@ function Home() {
         <div className="home-wrapper" style={{color: "white"}}>
             <button className="login-button">Login</button>
             <h1>Welcome to GoogleCalendarAI (WIP of course)</h1>
-            <textarea type="text" className="input-wrapper" placeholder="Enter your calendar details"></textarea>
-            <button className="generate-button">Generate</button>
+            <form onSubmit={handleSubmit}>
+                <textarea 
+                    type="text" 
+                    className="input-wrapper" 
+                    placeholder="Enter your calendar details"
+                    onChange={(e) => setUserInput(e.target.value)}
+                    >
+                </textarea>
+                <button className="generate-button">Generate</button>
+            </form>
             <div>{message.message}</div>
         </div>
     );
