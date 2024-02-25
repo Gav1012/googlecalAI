@@ -36,6 +36,7 @@ textarea.input-wrapper {
 }
 
 .generate-button {
+    display: flex;
     background-color: #121212;
     color: white;
     padding: 10px;
