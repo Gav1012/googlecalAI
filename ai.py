@@ -10,7 +10,9 @@ CORS(app)
 load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-# will need to add user input to updated the user input
+# chatgpt system given specific instructions to generate the response about schedules including
+# how to respond which will be used for processing for the Google calender to take in
+# will need to update the user portion to include the user input
 def generate_response():
   completion = client.chat.completions.create(
   model="gpt-3.5-turbo",
@@ -33,6 +35,7 @@ def generate_response():
 def get_message():
   return {"message": [generate_response()]}
 
+# this route is for the user sending their inputs from the text area to the processed by chatgpt
 @app.route("/send_input", methods=["POST"])
 def send_input():
   data = request.json.get("data")
