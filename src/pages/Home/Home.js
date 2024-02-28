@@ -7,14 +7,14 @@ function Home() {
     const [userInput, setUserInput] = useState('');
 
     // uses the /get_message route and sets to messsage state
-    useEffect(() => {
-        fetch('http://localhost:5000/get_message')
-        .then(res => res.json())
-        .then(data => {
-            setMessage(data);
-            console.log(data);
-        });
-    }, []);
+    // useEffect(() => {
+    //     fetch('http://localhost:5000/get_message')
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         setMessage(data);
+    //         console.log(data);
+    //     });
+    // }, []);
 
     // sends the input from the textarea to chatgpt to be generated
     const sendDatatoFlask = async() => {
@@ -27,6 +27,7 @@ function Home() {
         });
         const responseData = await response.json();
         console.log(responseData);
+        setMessage(responseData.message);
     };
     
     // handles clicking the submit button to then send input data
@@ -39,18 +40,19 @@ function Home() {
     return (
         <div className="home-wrapper" style={{color: "white"}}>
             <button className="login-button">Login</button>
-            <h1>Welcome to GoogleCalendarAI (WIP of course)</h1>
+            <h1>Welcome to GoogleCalendarAI</h1>
             <form onSubmit={handleSubmit}>
                 <textarea 
                     type="text" 
                     className="input-wrapper" 
                     placeholder="Enter your calendar details"
+                    value={userInput}
                     onChange={(e) => setUserInput(e.target.value)}
                     >
                 </textarea>
-                <button className="generate-button">Generate</button>
+                <button type="submit" className="generate-button">Generate</button>
             </form>
-            <div>{message.message}</div>
+            <div>{message}</div>
         </div>
     );
 }
