@@ -1,20 +1,10 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import './Home.css'
 
 function Home() {
     // holds the ChatGPT response from ai.py
     const [message, setMessage] = useState([{}]);
     const [userInput, setUserInput] = useState('');
-
-    // uses the /get_message route and sets to messsage state
-    // useEffect(() => {
-    //     fetch('http://localhost:5000/get_message')
-    //     .then(res => res.json())
-    //     .then(data => {
-    //         setMessage(data);
-    //         console.log(data);
-    //     });
-    // }, []);
 
     // sends the input from the textarea to chatgpt to be generated
     const sendDatatoFlask = async() => {
