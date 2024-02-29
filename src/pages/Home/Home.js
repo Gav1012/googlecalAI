@@ -3,7 +3,7 @@ import './Home.css'
 
 function Home() {
     // holds the ChatGPT response from ai.py
-    const [message, setMessage] = useState([{}]);
+    const [message, setMessage] = useState('');
     const [userInput, setUserInput] = useState('');
 
     // sends the input from the textarea to chatgpt to be generated
@@ -42,7 +42,7 @@ function Home() {
                 </textarea>
                 <button type="submit" className="generate-button">Generate</button>
             </form>
-            <div>{message}</div>
+            {message ? <div>{message}</div>: null}
         </div>
     );
 }
