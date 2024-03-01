@@ -7,7 +7,7 @@ At the moment this is still a WIP and features may change.
 * JavaScript
 * React
 * Python
-* Flask
+* Firebase
 * Google Calendar API
 * OpenAI API
 
