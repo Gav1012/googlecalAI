@@ -1,7 +1,9 @@
-import React, { useState } from "react"
-import './Home.css'
+import React, { useState } from "react";
+import { GoogleLogin } from '@react-oauth/google';
+import './Home.css';
 
 function Home() {
+    console.log(process.env.REACT_APP_CLIENT_ID);
     // holds the ChatGPT response from ai.py
     const [message, setMessage] = useState('');
     const [userInput, setUserInput] = useState('');
@@ -26,10 +28,22 @@ function Home() {
         sendDatatoFlask();
     }
 
+    const onSuccess = (response) => {
+        console.log(response);
+    }
+
     // main page react components, will need to update alooot
     return (
         <div className="home-wrapper" style={{color: "white"}}>
-            <button className="login-button">Login</button>
+            {/* <button className="login-button">Login</button> */}
+            <div className="login-button">
+                <GoogleLogin
+                    clientId="process.env.REACT_APP_CLIENT_ID"
+                    buttonText="Login with Google"
+                    onSuccess={onSuccess}
+                    cookiePolicy={'single_host_origin'}
+                />
+            </div>
             <h1>Welcome to GoogleCalendarAI</h1>
             <form onSubmit={handleSubmit}>
                 <textarea 
