@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import OpenAI from "openai";
 import { signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
 import { auth } from "../../firebase.js";
 import './Home.css';
@@ -10,25 +11,33 @@ function Home() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [userData, setUserData] = useState({});
 
-    // sends the input from the textarea to chatgpt to be generated
-    // const sendDatatoFlask = async() => {
-    //     const response = await fetch('http://localhost:5000/send_input', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify({ data: userInput })
-    //     });
-    //     const responseData = await response.json();
-    //     console.log(responseData);
-    //     setMessage(responseData.message);
-    // };
+    const openai = new OpenAI({
+        apiKey: process.env.REACT_APP_OPENAI_API_KEY,
+        dangerouslyAllowBrowser: true
+    });
+
+    const processRequest = async() => {
+        const completion = await openai.chat.completions.create({
+            messages: [{role: "system", content: `You are an assitant that is proficient in creating schedules with times that a user provides. 
+            You must adhere to these rules when responding
+            1) You only respond with the days of the week with the times you suggest scheduling. 
+            2) You should follow this format: Monday: Reading 1pm - 2pm, Gaming 2pm - 3pm, Coding 5am - 7am
+            3) Following the previous rule, you need to include event name following the time it will be scheduled/take place`},
+            {role: "user", "content": userInput}
+        ],
+            model: "gpt-3.5-turbo",
+            max_tokens: 50
+        })
+        console.log(completion.choices[0].message.content);
+        setMessage(completion.choices[0].message.content);
+    }
     
     // handles clicking the submit button to then send input data
     const handleSubmit = (event) => {
         event.preventDefault();
-        // sendDatatoFlask();
+        processRequest();
     }
+
     // https://firebase.google.com/docs/auth/web/google-signin
     // Login with Google using Firebase
     const googleSignIn = () => {
