@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import OpenAI from "openai";
+// import firebase from 'firebase/app';
 import { signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
 import { auth } from "../../firebase.js";
 import './Home.css';
+import { google } from 'googleapis';
+
 
 function Home() {
     // holds the ChatGPT response from ai.py
@@ -10,6 +13,23 @@ function Home() {
     const [userInput, setUserInput] = useState('');
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [userData, setUserData] = useState({});
+
+    const CLIENT_ID = 'temp';
+    const CLIENT_SECRET = 'temp';
+    const REDIRECT_URI = 'temp';
+
+    const oAuth2Client = new google.auth.OAuth2(
+        CLIENT_ID,
+        CLIENT_SECRET,
+        REDIRECT_URI
+    );
+
+    // const calendar = google.calendar({version: 'v3', oAuth2Client});
+
+    const calendar = google.calendar({
+        version: 'v3',
+        auth: auth.currentUser,
+    })
 
     const openai = new OpenAI({
         apiKey: process.env.REACT_APP_OPENAI_API_KEY,
