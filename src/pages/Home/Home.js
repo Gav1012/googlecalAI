@@ -1,9 +1,8 @@
 import React, { useState } from "react";
+import OpenAI from "openai";
 import { signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
-import { auth } from "../../firebase.js";
+import { auth } from "../../firebase";
 import './Home.css';
-import { google } from 'googleapis';
-
 
 function Home() {
     // holds the ChatGPT response from ai.py
@@ -11,20 +10,10 @@ function Home() {
     const [userInput, setUserInput] = useState('');
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [userData, setUserData] = useState({});
-    const [calendars, setCalendars] = useState([]);
-
-    // const CLIENT_ID = 't';
-    // const CLIENT_SECRET = 't';
-    // const REDIRECT_URI = 'http://localhost:3000';
-
-    // const oAuth2Client = new google.auth.OAuth2(
-    //     CLIENT_ID,
-    //     CLIENT_SECRET,
-    //     REDIRECT_URI
-    // );
 
     // handles clicking the submit button to then send input data
     const handleSubmit = (event) => {
+        processRequest();
         event.preventDefault();
     }
 
@@ -36,6 +25,7 @@ function Home() {
             const result = await signInWithPopup(auth, provider);
             setUserData(result.user);
             setIsLoggedIn(true);
+            console.log(result.user);
         } catch (error) {
             console.error(error);
         }
@@ -51,17 +41,26 @@ function Home() {
         }
     };
 
-    // const fetchCalendars = (user) => {
-    //     const calendar = google.calendar({ version: 'v3', auth: user });
-    //     calendar.calendarList.list({}, (err, res) => {
-    //         if (err) {
-    //             console.error('Error fetching calendars:', err);
-    //             return;
-    //         }
-    //         const calendars = res.data.items;
-    //         setCalendars(calendars);
-    //     });
-    // }
+    const openai = new OpenAI({
+        apiKey: process.env.REACT_APP_OPENAI_API_KEY,
+        dangerouslyAllowBrowser: true
+    });
+
+    const processRequest = async() => {
+        const completion = await openai.chat.completions.create({
+            messages: [{role: "system", content: `You are an assitant that is proficient in creating schedules with times that a user provides. 
+            You must adhere to these rules when responding
+            1) You only respond with the days of the week with the times you suggest scheduling. 
+            2) You should follow this format: Monday: Reading 1pm - 2pm, Gaming 2pm - 3pm, Coding 5am - 7am
+            3) Following the previous rule, you need to include event name following the time it will be scheduled/take place`},
+            {role: "user", "content": userInput}
+        ],
+            model: "gpt-3.5-turbo",
+            max_tokens: 50
+        })
+        console.log(completion.choices[0].message.content);
+        setMessage(completion.choices[0].message.content);
+    }
 
     // main page react components, will need to update alooot
     return (
