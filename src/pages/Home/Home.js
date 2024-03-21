@@ -69,7 +69,8 @@ function Home() {
                 <button className="login-button" onClick={googleSignIn}>Login with Google</button>:
                 <button className="login-button" onClick={logout}>Logout</button>
             }
-            <h1>Welcome to GoogleCalendarAI</h1>
+            <h1>Welcome to CalendarAI</h1>
+            {message ? <div>{message}</div>: null}
             <form onSubmit={handleSubmit}>
                 <textarea 
                     type="text" 
@@ -81,7 +82,7 @@ function Home() {
                 </textarea>
                 <button type="submit" className="generate-button">Generate</button>
             </form>
-            {message ? <div>{message}</div>: null}
+            
         </div>
     );
 }
