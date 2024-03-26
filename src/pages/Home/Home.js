@@ -71,6 +71,24 @@ function Home() {
             }
             <h1>Welcome to CalendarAI</h1>
             {message ? <div>{message}</div>: null}
+            <div class="daysOfWeek">
+                <div>Sun</div>
+                <div>Mon</div>
+                <div>Tue</div>
+                <div>Wed</div>
+                <div>Thu</div>
+                <div>Fri</div>
+                <div>Sat</div>
+            </div>
+            <div class="days">
+                <div>SDay</div>
+                <div>MDay</div>
+                <div>TDay</div>
+                <div>WDay</div>
+                <div>TDay</div>
+                <div>FDay</div>
+                <div>SDay</div>
+            </div>
             <form onSubmit={handleSubmit}>
                 <textarea 
                     type="text" 
