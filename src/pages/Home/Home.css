@@ -34,7 +34,7 @@ textarea.input-wrapper {
     background-color: #121212;
     width: 500px;
     color: white; 
-    border: 1px solid #ccc; 
+    border: 1px 20px solid #ccc; 
     padding: 10px; 
     border-radius: 10px;
     margin-bottom: 1rem;
@@ -53,5 +53,41 @@ textarea.input-wrapper {
 }
 
 .generate-button:hover {
+    background-color: grey;
+}
+
+.home-wrapper .daysOfWeek {
+    width: 50%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    font-size: 1rem;
+    text-transform: capitalize;
+}
+
+.home-wrapper .days{
+    width: 55%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 20px;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.home-wrapper .days .day {
+    width: 10%;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 1px solid white;
+}
+
+.day:hover {
     background-color: grey;
 }
