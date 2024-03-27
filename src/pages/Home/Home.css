@@ -1,7 +1,6 @@
 .home-wrapper {
     display: flex;
     background-color: #121212;
-    /* min-height: calc(100vh - 2rem); */
     min-width: 100vh;
     height: 100vh;
     flex-direction: column;

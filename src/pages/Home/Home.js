@@ -65,6 +65,8 @@ function Home() {
     // main page react components, will need to update alooot
     return (
         <div className="home-wrapper" style={{color: "white"}}>
+            <button>How to Use</button>
+            <button>About</button>
             {!isLoggedIn ? 
                 <button className="login-button" onClick={googleSignIn}>Login with Google</button>:
                 <button className="login-button" onClick={logout}>Logout</button>
