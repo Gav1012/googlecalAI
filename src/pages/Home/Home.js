@@ -69,7 +69,7 @@ function Home() {
                 <button className="login-button" onClick={googleSignIn}>Login with Google</button>:
                 <button className="login-button" onClick={logout}>Logout</button>
             }
-            <h1>Welcome to CalendarAI</h1>
+            <h1>Welcome to WeekPlannerAI</h1>
             {message ? <div>{message}</div>: null}
             <div class="daysOfWeek">
                 <div>Sun</div>
@@ -81,13 +81,13 @@ function Home() {
                 <div>Sat</div>
             </div>
             <div class="days">
-                <div>SDay</div>
-                <div>MDay</div>
-                <div>TDay</div>
-                <div>WDay</div>
-                <div>TDay</div>
-                <div>FDay</div>
-                <div>SDay</div>
+                <div class="day">SDay</div>
+                <div class="day">MDay</div>
+                <div class="day">TDay</div>
+                <div class="day">WDay</div>
+                <div class="day">TDay</div>
+                <div class="day">FDay</div>
+                <div class="day">SDay</div>
             </div>
             <form onSubmit={handleSubmit}>
                 <textarea 
