@@ -7,6 +7,7 @@ import './Home.css';
 function Home() {
     // holds the ChatGPT response from ai.py
     const [message, setMessage] = useState('');
+    const [dayList, setDayList] = useState('');
     const [userInput, setUserInput] = useState('');
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [userData, setUserData] = useState({});
@@ -17,6 +18,9 @@ function Home() {
         event.preventDefault();
     }
 
+    const selectDay = (event) => {
+        setDayList(event.target.value);
+    }
     // https://firebase.google.com/docs/auth/web/google-signin
     // Login with Google using Firebase
     const googleSignIn = async () => {
@@ -72,7 +76,7 @@ function Home() {
                 <button className="login-button" onClick={logout}>Logout</button>
             }
             <h1>Welcome to WeekPlannerAI</h1>
-            {message ? <div>{message}</div>: null}
+            
             <div class="daysOfWeek">
                 <div>Sun</div>
                 <div>Mon</div>
@@ -83,14 +87,16 @@ function Home() {
                 <div>Sat</div>
             </div>
             <div class="days">
-                <div class="day">SDay</div>
-                <div class="day">MDay</div>
-                <div class="day">TDay</div>
-                <div class="day">WDay</div>
-                <div class="day">TDay</div>
-                <div class="day">FDay</div>
-                <div class="day">SDay</div>
+                <div class="day" onClick={() => setDayList("Sunday")}>SDay</div>
+                <div class="day" onClick={() => setDayList("Monday")}>MDay</div>
+                <div class="day" onClick={() => setDayList("Tuesday")}>TDay</div>
+                <div class="day" onClick={() => setDayList("Wednesday")}>WDay</div>
+                <div class="day" onClick={() => setDayList("Thursday")}>TDay</div>
+                <div class="day" onClick={() => setDayList("Friday")}>FDay</div>
+                <div class="day" onClick={() => setDayList("Saturday")}>SDay</div>
             </div>
+            {dayList ? <div>{dayList}</div>: null}
+            {message ? <div>{message}</div>: null}
             <form onSubmit={handleSubmit}>
                 <textarea 
                     type="text" 
@@ -102,7 +108,6 @@ function Home() {
                 </textarea>
                 <button type="submit" className="generate-button">Generate</button>
             </form>
-            
         </div>
     );
 }
