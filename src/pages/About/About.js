@@ -1,7 +1,6 @@
 import React from "react";
 
 function About() {
-    print("hello about");
     return (
         <div>
             <h1>About/Credits(?)</h1>
