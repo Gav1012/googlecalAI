@@ -97,3 +97,7 @@ textarea.input-wrapper {
 .day:hover {
     background-color: #0077B6;
 }
+
+.home-nav {
+    color: white;
+}

@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom"
 import OpenAI from "openai";
 import { signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
 import { auth } from "../../firebase";
 import './Home.css';
 
+// WILL NEED TO DO MASSIVE REDESIGN OF UI
 function Home() {
     // holds the ChatGPT response from ai.py
     const [message, setMessage] = useState('');
@@ -69,8 +71,27 @@ function Home() {
     // main page react components, will need to update alooot
     return (
         <div className="home-wrapper" style={{color: "white"}}>
-            <button>How to Use</button>
-            <button>About</button>
+            <Link
+                className={"home-nav"}
+                to={"/"}
+                style={{textDecoration: "none"}}
+            >
+                Home
+            </Link>
+            <Link
+                className={"home-nav"}
+                to={"/intro"}
+                style={{textDecoration: "none"}}
+            >
+                Intro
+            </Link>
+            <Link
+                className={"home-nav"}
+                to={"/about"}
+                style={{textDecoration: "none"}}
+            >
+                About
+            </Link>
             {!isLoggedIn ? 
                 <button className="login-button" onClick={googleSignIn}>Login with Google</button>:
                 <button className="login-button" onClick={logout}>Logout</button>
