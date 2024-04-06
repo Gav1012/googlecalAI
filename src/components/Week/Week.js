@@ -2,7 +2,21 @@ import React, { useState } from "react";
 import "./Week.css";
 
 function Week() {
-    const [dayList, setDayList] = useState('');
+    const [dayList, setDayList] = useState({
+        'Sunday': ['Event 1', 'Event 2'],
+        'Monday': ['Event 3'],
+        'Tuesday': ['Event 1', 'Event 2'],
+        'Wednesday': ['Event 3'],
+        'Thursday': ['Event 1', 'Event 2'],
+        'Friday': ['Event 3'],
+        'Saturday': ['Event 1', 'Event 2'],
+    });
+    const [selectedDay, setSelectedDay] = useState(null);
+
+    const handleDateClick = (date) => {
+        setSelectedDay(date);
+    };
+
     return (
         <>
             <div class="daysOfWeek">
@@ -15,15 +29,22 @@ function Week() {
                     <div>Sat</div>
             </div>
             <div class="days">
-                <div class="day" onClick={() => setDayList("Sunday")}>SDay</div>
-                <div class="day" onClick={() => setDayList("Monday")}>MDay</div>
-                <div class="day" onClick={() => setDayList("Tuesday")}>TDay</div>
-                <div class="day" onClick={() => setDayList("Wednesday")}>WDay</div>
-                <div class="day" onClick={() => setDayList("Thursday")}>TDay</div>
-                <div class="day" onClick={() => setDayList("Friday")}>FDay</div>
-                <div class="day" onClick={() => setDayList("Saturday")}>SDay</div>
+                {Object.keys(dayList).map((day) => (
+                    <div class="day" onClick={() => handleDateClick(day)}>{dayList[day].length} events</div>
+                ))}
             </div>
-            {dayList ? <div>{dayList}</div>: null}
+            {selectedDay && (
+                <div className="dayPopUp">
+                    <div className="day-content" onClick={(e) => e.stopPropagation()}>
+                        <h2>{selectedDay}</h2>
+                        <ul>
+                            {dayList[selectedDay].map((event, index) => (
+                                <li key={index}>{event}</li>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
+            )}
         </>
     )  
 }
