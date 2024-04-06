@@ -61,43 +61,6 @@ textarea.input-wrapper {
     background-color: #0077B6;
 }
 
-.home-wrapper .daysOfWeek {
-    width: 50%;
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
-    font-size: 1rem;
-    text-transform: capitalize;
-}
-
-.home-wrapper .days{
-    width: 55%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 0 20px;
-    font-size: 1rem;
-    font-weight: 500;
-    margin-bottom: 20px;
-}
-
-.home-wrapper .days .day {
-    width: 10%;
-    height: 90px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    border: 1px solid white;
-    transition: 0.3s;
-}
-
-.day:hover {
-    background-color: #0077B6;
-}
-
 .home-nav {
     color: white;
 }

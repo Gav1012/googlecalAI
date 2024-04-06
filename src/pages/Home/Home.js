@@ -3,13 +3,13 @@ import { Link } from "react-router-dom"
 import OpenAI from "openai";
 import { signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
 import { auth } from "../../firebase";
+import Week from  "../../components/Week/Week";
 import './Home.css';
 
 // WILL NEED TO DO MASSIVE REDESIGN OF UI
 function Home() {
     // holds the ChatGPT response from ai.py
     const [message, setMessage] = useState('');
-    const [dayList, setDayList] = useState('');
     const [userInput, setUserInput] = useState('');
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [userData, setUserData] = useState({});
@@ -20,9 +20,7 @@ function Home() {
         event.preventDefault();
     }
 
-    const selectDay = (event) => {
-        setDayList(event.target.value);
-    }
+    
     // https://firebase.google.com/docs/auth/web/google-signin
     // Login with Google using Firebase
     const googleSignIn = async () => {
@@ -97,26 +95,7 @@ function Home() {
                 <button className="login-button" onClick={logout}>Logout</button>
             }
             <h1>Welcome to WeekPlannerAI</h1>
-            
-            <div class="daysOfWeek">
-                <div>Sun</div>
-                <div>Mon</div>
-                <div>Tue</div>
-                <div>Wed</div>
-                <div>Thu</div>
-                <div>Fri</div>
-                <div>Sat</div>
-            </div>
-            <div class="days">
-                <div class="day" onClick={() => setDayList("Sunday")}>SDay</div>
-                <div class="day" onClick={() => setDayList("Monday")}>MDay</div>
-                <div class="day" onClick={() => setDayList("Tuesday")}>TDay</div>
-                <div class="day" onClick={() => setDayList("Wednesday")}>WDay</div>
-                <div class="day" onClick={() => setDayList("Thursday")}>TDay</div>
-                <div class="day" onClick={() => setDayList("Friday")}>FDay</div>
-                <div class="day" onClick={() => setDayList("Saturday")}>SDay</div>
-            </div>
-            {dayList ? <div>{dayList}</div>: null}
+            <Week />
             {message ? <div>{message}</div>: null}
             <form onSubmit={handleSubmit}>
                 <textarea 
