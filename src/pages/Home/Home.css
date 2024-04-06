@@ -1,5 +1,6 @@
 .home-wrapper {
     display: flex;
+    position: relative;
     background-color: #121212;
     min-width: 100vh;
     height: 100vh;
@@ -29,9 +30,9 @@
 }
 
 form {
+    position: absolute;
     display: flex;
-    align-items: center;
-    flex-direction: column;
+    bottom: 0;
 }
 
 textarea.input-wrapper {
