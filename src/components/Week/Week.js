@@ -4,7 +4,7 @@ import "./Week.css";
 function Week() {
     const [dayList, setDayList] = useState({
         'Sunday': ['Event 1', 'Event 2'],
-        'Monday': ['Event 3'],
+        'Monday': [],
         'Tuesday': ['Event 1', 'Event 2'],
         'Wednesday': ['Event 3'],
         'Thursday': ['Event 1', 'Event 2'],
@@ -33,7 +33,7 @@ function Week() {
                     <div class="day" onClick={() => handleDateClick(day)}>{dayList[day].length} events</div>
                 ))}
             </div>
-            {selectedDay && (
+            {selectedDay ? (
                 <div className="dayPopUp">
                     <div className="day-content" onClick={(e) => e.stopPropagation()}>
                         <h2>{selectedDay}</h2>
@@ -44,7 +44,7 @@ function Week() {
                         </ul>
                     </div>
                 </div>
-            )}
+            ): <h2>Select Day To See Events</h2>}
         </>
     )  
 }
