@@ -17,6 +17,18 @@ function Week() {
         setSelectedDay(date);
     };
 
+    const parseChatGPTResponse = (response) => {
+        const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        const dayMatches = response.match(new RegExp(daysOfWeek.join('|'), 'gi'));
+        
+        if (dayMatches) {
+            dayMatches.forEach(day => {
+                // Update the dayList state for each matched day
+                console.log(day, dayList[day]);
+            });
+        }
+    }
+
     return (
         <>
             <div class="daysOfWeek">
@@ -45,6 +57,7 @@ function Week() {
                     </div>
                 </div>
             ): <h2>Select Day To See Events</h2>}
+            <button type="button" onClick={ () => {parseChatGPTResponse("Sunday")}}>test button</button>
         </>
     )  
 }

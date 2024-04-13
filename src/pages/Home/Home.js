@@ -65,7 +65,6 @@ function Home() {
         console.log(completion.choices[0].message.content);
         setMessage(completion.choices[0].message.content);
     }
-
     // main page react components, will need to update alooot
     return (
         <div className="home-wrapper" style={{color: "white"}}>
