@@ -1,14 +1,14 @@
 # googlecalAI
-This project combines the APIs of OpenAI and Google Calendar to work together to create schedules. The main goal is to have a web page where users can \
-login to their Google accounts and ask an AI to schedule events for them based on information such as specific days, time periods, exceptions, and more. \
-At the moment this is still a WIP and features may change.
+This project uses React and OpenAI to create a weekly schedule for the user, \
+following a prompt provided by the user The main goal is to have a web page \ 
+where users can  login to their Google accounts and ask an AI to schedule events \
+for them based on information such as specific days, time periods, exceptions, \
+and more. At the moment this is still a WIP and features may change.
 
 # Languages/Tools
 * JavaScript
 * React
-* Python
 * Firebase
-* Google Calendar API
 * OpenAI API
 
 # Installation
